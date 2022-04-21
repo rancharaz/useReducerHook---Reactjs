@@ -1,23 +1,32 @@
+import React, { useState, use, useReducer } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  /* useState example */
+  /*   const [checked, setChecked] = useState(false)
+    const toggle = () => {
+      setChecked((checked) => !checked)
+    } */
+
+
+  /* useReducer example */
+  /* the function is used directly in the place of the useState hook */
+  const [checked, toggle] = useReducer(
+    (checked) => !checked,
+    false)
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container mx-auto justify-center items-center text-center'>
+      <div className="mt-5"></div>
+      <form>
+        <div className="text-2xl">Form</div>
+        <label htmlFor="name" className='text-xl'> Name: {checked ? "David Beckham" : "John Brown"}</label>
+        {/* useState example */}
+        <input type="checkbox" name={checked.toString()} id="" className='checkBox ml-3 relative top-2' onChange={toggle} />
+      </form>
     </div>
   );
 }
